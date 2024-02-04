@@ -11,7 +11,7 @@ spec:
   ports:
   - name: jksport
     protocol: TCP
-    port: 3000
+    port: 8080
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -41,7 +41,7 @@ spec:
       - name: jenkinspod
         image: cansentay/jenkins
         ports:
-        - containerPort: 3000
+        - containerPort: 8080
         volumeMounts:
         - name: "storage"
           mountPath: "/logs"
