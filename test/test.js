@@ -1,7 +1,7 @@
 'use strict';
 
 const request = require('supertest');
-const app = require('./app'); // Express uygulamanızın dosya yolunu doğru şekilde belirtin
+const app = require('../index.js'); // Express uygulamanızın dosya yolunu doğru şekilde belirtin
 
 describe('GET /', () => {
   it('responds with "Hello World"', (done) => {
