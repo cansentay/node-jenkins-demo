@@ -1,6 +1,5 @@
-'use strict';
-
 const express = require('express');
+const http = require('http');
 
 // Constants
 const PORT = 8080;
@@ -12,5 +11,10 @@ app.get('/', (req, res) => {
   res.send("Hello World");
 });
 
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);
+const server = http.createServer(app);
+
+server.listen(PORT, HOST, () => {
+  console.log(`Running on http://${HOST}:${PORT}`);
+});
+
+module.exports = server;
