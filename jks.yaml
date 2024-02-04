@@ -11,11 +11,11 @@ spec:
     image: cansentay/jenkins
     resources:
       limits:
-        cpu: 200m
-        memory: 500Mi
+        cpu: 1000m
+        memory: 1000Mi
       requests:
-        cpu: 100m
-        memory: 200Mi
+        cpu: 500m
+        memory: 500Mi
     ports:
     - containerPort: 8080
     volumeMounts:
