@@ -1,7 +1,13 @@
-var request = require('supertest');
-var app = require('../index.js');
-describe('GET /will', function() {
-    it('respond with hello world', function(done) {
-        request(app).get('/will').expect('{ "response": "Hello World" }', done);
-    });
+'use strict';
+
+const request = require('supertest');
+const app = require('./app'); // Express uygulamanızın dosya yolunu doğru şekilde belirtin
+
+describe('GET /', () => {
+  it('responds with "Hello World"', (done) => {
+    request(app)
+      .get('/')
+      .expect(200)
+      .expect('Hello World', done);
+  });
 });
