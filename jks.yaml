@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: jenkinspod
+  namespace: default
+  labels:
+    app: jks
+spec:
+  containers:
+  - name: jenkinspod
+    image: cansentay/jenkins
+    resources:
+      limits:
+        cpu: 200m
+        memory: 500Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
+    ports:
+    - containerPort: 8080
+    volumeMounts:
+    - name: "storage"
+      mountPath: "/logs"
+  volumes:
+    - name: "storage"
+      emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jkssvc
+  namespace: default
+spec:
+  selector:
+    app: jks
+  type: LoadBalancer
+  ports:
+  - name: jksport
+    protocol: TCP
+    port: 8080
